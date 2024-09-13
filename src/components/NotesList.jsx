@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
 
 function NotesList({ sortAscending }) {
-  const [notes, setNotes] = React.useState([]);
+  const [notes, setNotes] = useState([]);
 
   function addInput(userInput) {
     setNotes((prevNotes) => [...prevNotes, userInput]);

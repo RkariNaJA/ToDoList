@@ -4,10 +4,12 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import Fab from "@mui/material/Fab";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
+import PersonIcon from "@mui/icons-material/Person";
 import LoginForm from "./LoginForm";
 
 function Header() {
   const [showModal, setShowModal] = useState(false);
+  const [email, setEmail] = useState("");
 
   const handleLogin = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
@@ -19,6 +21,13 @@ function Header() {
           <DescriptionIcon />
           Take Notes
         </h1>
+        <div className="username">
+          {email && (
+            <span>
+              <PersonIcon /> : {email}
+            </span>
+          )}
+        </div>
         <Fab variant="extended" size="medium" onClick={handleLogin}>
           <NavigationIcon sx={{ mr: 1 }} />
           Log-In
@@ -48,7 +57,7 @@ function Header() {
                 ></button>
               </div>
               <div className="modal-body">
-                <LoginForm />
+                <LoginForm setEmail={setEmail} />
               </div>
               <div className="modal-footer">
                 <button

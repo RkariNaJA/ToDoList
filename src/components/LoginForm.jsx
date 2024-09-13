@@ -1,7 +1,7 @@
 import { useState } from "react";
 import LoginIcon from "@mui/icons-material/Login";
 
-function LoginForm(props) {
+function LoginForm({ setEmail }) {
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -9,20 +9,21 @@ function LoginForm(props) {
 
   function onUpdateField(event) {
     const { value, name } = event.target;
-    setForm((prevForm) => {
-      return { ...prevForm, [name]: value };
-    });
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
   }
 
   function onSubmitForm(event) {
     event.preventDefault();
-    alert(JSON.stringify(form, null, 2));
+    setEmail(form.email); // Update email in Header
   }
 
   return (
     <form onSubmit={onSubmitForm}>
       <div className="mb-3">
-        <label className="form-label">Email</label>
+        <label className="form-label">Username</label>
         <input
           className="form-control"
           type="text"

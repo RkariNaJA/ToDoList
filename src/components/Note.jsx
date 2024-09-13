@@ -14,6 +14,7 @@ function Note({ id, title, content, createdAt, delete: handleDelete }) {
   const [history, setHistory] = useState([]);
   const [isHistoryVisible, setIsHistoryVisible] = useState(false);
   const [isDateVisible, setIsDateVisible] = useState(false);
+  const [isUsername, setIsUsername] = useState("");
 
   function handleEdit() {
     if (isEditing) {
@@ -40,6 +41,9 @@ function Note({ id, title, content, createdAt, delete: handleDelete }) {
   function toggleDateVisibility() {
     setIsDateVisible(!isDateVisible);
   }
+  function setUser() {
+    setIsUsername(setEmail);
+  }
 
   return (
     <div className="note">
@@ -63,6 +67,7 @@ function Note({ id, title, content, createdAt, delete: handleDelete }) {
           <>
             <h1>{currentTitle}</h1>
             <p>{currentContent}</p>
+            <p>{isUsername}</p>
             {isDateVisible && (
               <p className="note-date">
                 <AccessTimeIcon /> {createdAt}
@@ -71,18 +76,23 @@ function Note({ id, title, content, createdAt, delete: handleDelete }) {
           </>
         )}
       </div>
+
       <button onClick={() => handleDelete(id)}>
         <DeleteIcon />
       </button>
+
       <button onClick={handleEdit}>
         {isEditing ? <SaveAltIcon /> : <EditIcon />}
       </button>
+
       <button onClick={toggleHistoryVisibility}>
         <HistoryIcon />
       </button>
+
       <button onClick={toggleDateVisibility}>
         {isDateVisible ? <VisibilityOffIcon /> : <VisibilityIcon />}
       </button>
+
       {isHistoryVisible && (
         <div className="history">
           <h2>History</h2>
