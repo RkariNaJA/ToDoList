@@ -5,7 +5,7 @@ function CreateArea({ addUserInput }) {
   const [note, setNote] = useState({
     title: "",
     content: "",
-    createdAt: new Date().toLocaleString(), // Capture the current date and time
+    createdAt: new Date().toLocaleString(),
   });
   const [isExpand, setIsExpand] = useState(false);
 

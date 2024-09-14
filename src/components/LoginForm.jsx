@@ -17,7 +17,7 @@ function LoginForm({ setEmail }) {
 
   function onSubmitForm(event) {
     event.preventDefault();
-    setEmail(form.email); // Update email in Header
+    setEmail(form.email);
   }
 
   return (
