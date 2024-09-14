@@ -7,14 +7,13 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
-function Note({ id, title, content, createdAt, delete: handleDelete }) {
+function Note({ id, title, content, createdAt, delete: handleDelete, update }) {
   const [isEditing, setIsEditing] = useState(false);
   const [currentTitle, setCurrentTitle] = useState(title);
   const [currentContent, setCurrentContent] = useState(content);
   const [history, setHistory] = useState([]);
   const [isHistoryVisible, setIsHistoryVisible] = useState(false);
   const [isDateVisible, setIsDateVisible] = useState(false);
-  const [isUsername, setIsUsername] = useState("");
 
   function handleEdit() {
     if (isEditing) {
@@ -22,6 +21,7 @@ function Note({ id, title, content, createdAt, delete: handleDelete }) {
         ...history,
         { title: currentTitle, content: currentContent },
       ]);
+      update(id, { title: currentTitle, content: currentContent, createdAt });
     }
     setIsEditing(!isEditing);
   }
@@ -41,9 +41,6 @@ function Note({ id, title, content, createdAt, delete: handleDelete }) {
   function toggleDateVisibility() {
     setIsDateVisible(!isDateVisible);
   }
-  function setUser() {
-    setIsUsername(setEmail);
-  }
 
   return (
     <div className="note">
@@ -56,7 +53,6 @@ function Note({ id, title, content, createdAt, delete: handleDelete }) {
               onChange={handleTitleChange}
               placeholder="Title"
             />
-
             <textarea
               value={currentContent}
               onChange={handleContentChange}
@@ -67,7 +63,6 @@ function Note({ id, title, content, createdAt, delete: handleDelete }) {
           <>
             <h1>{currentTitle}</h1>
             <p>{currentContent}</p>
-            <p>{isUsername}</p>
             {isDateVisible && (
               <p className="note-date">
                 <AccessTimeIcon /> {createdAt}
@@ -100,7 +95,7 @@ function Note({ id, title, content, createdAt, delete: handleDelete }) {
             <ul>
               {history.map((entry, index) => (
                 <li key={index}>
-                  <h3>Change {index + 1}</h3>
+                  <h3>Version {index + 1}</h3>
                   <h4>Title:</h4>
                   <p>{entry.title}</p>
                   <h4>Content:</h4>
