@@ -7,7 +7,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
-function Note({ id, title, content, createdAt, delete: handleDelete, update }) {
+function Note({ id, title, content, createdAt, delete: handleDelete }) {
   const [isEditing, setIsEditing] = useState(false);
   const [currentTitle, setCurrentTitle] = useState(title);
   const [currentContent, setCurrentContent] = useState(content);
@@ -21,7 +21,6 @@ function Note({ id, title, content, createdAt, delete: handleDelete, update }) {
         ...history,
         { title: currentTitle, content: currentContent },
       ]);
-      update(id, { title: currentTitle, content: currentContent, createdAt });
     }
     setIsEditing(!isEditing);
   }
