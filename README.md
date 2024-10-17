@@ -4,7 +4,7 @@ Demo ToDoList Web-Site
 
 You can log in. Your username will appear on the top let
 
-![image](https://github.com/user-attachments/assets/02dae93e-f9dd-46f6-b46c-80bb2d617952)
+![image](https://github.com/user-attachments/assets/b6fc9a0e-c6e9-49ff-8fe9-19fb2d8895a9)
 
 ![image](https://github.com/user-attachments/assets/20a9d9d2-ca33-499f-8b42-7e722be6a52b)
 
